@@ -60,7 +60,12 @@ void CMain::GameLoop(void)
 */
     int mainX = 400;
     int mainY = 300;
-    CSprite* mainhero = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", mainX, mainY, 35, 53, &CameraX, &CameraY,
+    int sizeX = 35;
+    int sizeY = 53;
+    int centerX = mainX + sizeX/2;
+    int centerY = mainY + sizeY/2;
+
+    CSprite* mainhero = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", mainX, mainY, sizeX, sizeY, &CameraX, &CameraY,
                               CCollisionRectangle(0, 0, 0, 0), csdl_setup);
     double n = 0;//градус
     double rad = 0;
@@ -74,9 +79,11 @@ void CMain::GameLoop(void)
 
         //считываем положение мышки
 		SDL_GetMouseState(&MouseX, &MouseY);
-		delX = MouseX - mainX;
-		delY = MouseY - mainY;
+		delX = MouseX - centerX;
+		delY = MouseY - centerY;
 		rad = acos(delX/(sqrt(delX*delX+delY*delY)));
+		if(MouseY < centerY)
+            rad = M_PI + (M_PI - rad);
 		n = 180/M_PI * rad;
         n = n + 90;
         std::cout << "n: " << n << "rad: " << rad << std::endl;
