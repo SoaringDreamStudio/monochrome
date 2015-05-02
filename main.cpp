@@ -56,9 +56,13 @@ void CMain::GameLoop(void)
 
     //удаляем процесс загрузки
     delete loadingProcess;
-*/  CSprite* mainhero = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", 400, 300, 35, 53, &CameraX, &CameraY,
+
+*/
+    int mainX = 400;
+    int mainY = 300;
+    CSprite* mainhero = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", mainX, mainY, 35, 53, &CameraX, &CameraY,
                               CCollisionRectangle(0, 0, 0, 0), csdl_setup);
-    double n = 0;
+    double n = 0;//градус
     //основной процесс игры
     //Выполняется до тех пор пока переменная quit ложна и не был нажат крестик
 	while(!quit && csdl_setup->GetMainEvent()->type != SDL_QUIT)
@@ -68,8 +72,9 @@ void CMain::GameLoop(void)
 
         //считываем положение мышки
 		SDL_GetMouseState(&MouseX, &MouseY);
+		n = 180/M_PI*(acos((MouseX - mainX)/(sqrt(MouseX - mainX)+(MouseY - mainY))));
+        n = n + 90;
         mainhero->DrawWithRotate(n);
-        n = n + 0.05;
         /*
         //проверка на режим игры и считывание клавиш для переключения режимов
         Stage1->Update();
