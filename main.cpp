@@ -72,8 +72,9 @@ void CMain::GameLoop(void)
 
         //считываем положение мышки
 		SDL_GetMouseState(&MouseX, &MouseY);
-		n = 180/M_PI*(acos((MouseX - mainX)/(sqrt(MouseX - mainX)+(MouseY - mainY))));
+		n = 180/M_PI * (acos((MouseX - mainX)/(sqrt(MouseX - mainX)+(MouseY - mainY))));
         n = n + 90;
+        std::cout << "n: " << n << std::endl;
         mainhero->DrawWithRotate(n);
         /*
         //проверка на режим игры и считывание клавиш для переключения режимов
