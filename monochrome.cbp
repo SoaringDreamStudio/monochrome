@@ -31,27 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="Libraries/SDL2-devel-2.0.3-mingw/SDL2-2.0.3/i686-w64-mingw32/include/SDL2" />
-			<Add directory="Libraries/SDL2_mixer-2.0.0/i686-w64-mingw32/include/SDL2" />
-			<Add directory="Libraries/SDL2_image-2.0.0/i686-w64-mingw32/include/SDL2" />
 		</Compiler>
-		<Linker>
-			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer" />
-			<Add directory="Libraries/SDL2-devel-2.0.3-mingw/SDL2-2.0.3/i686-w64-mingw32/lib" />
-			<Add directory="Libraries/SDL2_image-2.0.0/i686-w64-mingw32/lib" />
-			<Add directory="Libraries/SDL2_mixer-2.0.0/i686-w64-mingw32/lib" />
-		</Linker>
-		<Unit filename="CollisionRectangle.cpp" />
-		<Unit filename="CollisionRectangle.h" />
-		<Unit filename="Main.h" />
-		<Unit filename="SDL_Setup.cpp" />
-		<Unit filename="SDL_Setup.h" />
-		<Unit filename="Sprite.cpp" />
-		<Unit filename="Sprite.h" />
-		<Unit filename="libraries.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="monochrome.cpp" />
-		<Unit filename="struct.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
