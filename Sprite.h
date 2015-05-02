@@ -17,6 +17,8 @@ public:
 	void DrawSteady();
 	void DrawStatic();
 
+	void DrawWithRotate(double angle);
+
 	void SetX(float X);
 	void SetY(float Y);
 	void SetPosition(float X, float Y);

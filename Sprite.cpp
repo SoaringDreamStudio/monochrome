@@ -245,3 +245,14 @@ bool CSprite::checkLoadedSprites(CSDL_Setup* csdl_setup, std::string FilePath) /
         return false;
     }
 }
+
+void CSprite::DrawWithRotate(double angle)
+{
+    SDL_RenderCopyEx(renderer,
+                     image,
+                     NULL,
+                     &rect,
+                     angle,
+                     NULL,
+                     SDL_FLIP_NONE);
+}
