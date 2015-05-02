@@ -44,6 +44,8 @@
 		<Unit filename="CollisionRectangle.cpp" />
 		<Unit filename="CollisionRectangle.h" />
 		<Unit filename="Main.h" />
+		<Unit filename="MainCharacter.cpp" />
+		<Unit filename="MainCharacter.h" />
 		<Unit filename="SDL_Setup.cpp" />
 		<Unit filename="SDL_Setup.h" />
 		<Unit filename="Sprite.cpp" />

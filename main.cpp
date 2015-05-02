@@ -16,6 +16,7 @@ CMain::CMain(int passed_ScreenWidth, int passed_ScreenHeight)
 	MouseX = 0;
 	MouseY = 0;
 	ignoreGameOver = false;
+	MainHero = new MainCharacter(&MouseX, &MouseY, &CameraX, &CameraY, csdl_setup);
 
 }
 
@@ -58,18 +59,7 @@ void CMain::GameLoop(void)
     delete loadingProcess;
 
 */
-    int mainX = 400;
-    int mainY = 300;
-    int sizeX = 35;
-    int sizeY = 53;
-    int centerX = mainX + sizeX/2;
-    int centerY = mainY + sizeY/2;
 
-    CSprite* mainhero = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", mainX, mainY, sizeX, sizeY, &CameraX, &CameraY,
-                              CCollisionRectangle(0, 0, 0, 0), csdl_setup);
-    double n = 0;//градус
-    double rad = 0;
-    int delX, delY;
     //основной процесс игры
     //Выполняется до тех пор пока переменная quit ложна и не был нажат крестик
 	while(!quit && csdl_setup->GetMainEvent()->type != SDL_QUIT)
@@ -79,15 +69,8 @@ void CMain::GameLoop(void)
 
         //считываем положение мышки
 		SDL_GetMouseState(&MouseX, &MouseY);
-		delX = MouseX - centerX;
-		delY = MouseY - centerY;
-		rad = acos(delX/(sqrt(delX*delX+delY*delY)));
-		if(MouseY < centerY)
-            rad = M_PI + (M_PI - rad);
-		n = 180/M_PI * rad;
-        n = n + 90;
-        std::cout << "n: " << n << "rad: " << rad << std::endl;
-        mainhero->DrawWithRotate(n);
+
+        MainHero->Draw();
         /*
         //проверка на режим игры и считывание клавиш для переключения режимов
         Stage1->Update();
