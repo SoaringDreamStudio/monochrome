@@ -1,6 +1,5 @@
 #pragma once
-#include "SDL_Setup.h"
-#include "Sprite.h"
+#include "graphics.h"
 //#include "MainCharacter.h"
 #include "GameLvl.h"
 //#include "Menu.h"

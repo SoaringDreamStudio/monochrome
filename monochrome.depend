@@ -5,7 +5,7 @@
 1430575756 c:\users\avdrine\documents\github\monochrome\collisionrectangle.h
 	"libraries.h"
 
-1430575837 c:\users\avdrine\documents\github\monochrome\libraries.h
+1430641616 c:\users\avdrine\documents\github\monochrome\libraries.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_mixer.h>
@@ -351,17 +351,16 @@
 	"begin_code.h"
 	"close_code.h"
 
-1430575739 c:\users\avdrine\documents\github\monochrome\struct.h
+1430641483 c:\users\avdrine\documents\github\monochrome\struct.h
 	"libraries.h"
-	"CollisionRectangle.h"
+	"graphics/CollisionRectangle.h"
 
 1430610121 source:c:\users\avdrine\documents\github\monochrome\main.cpp
 	"libraries.h"
 	"Main.h"
 
-1430610303 c:\users\avdrine\documents\github\monochrome\main.h
-	"SDL_Setup.h"
-	"Sprite.h"
+1430641674 c:\users\avdrine\documents\github\monochrome\main.h
+	"graphics.h"
 	"GameLvl.h"
 	<windows.h>
 	<math.h>
@@ -385,19 +384,16 @@
 	"libraries.h"
 	"Sprite.h"
 
-1430638348 c:\users\avdrine\documents\github\monochrome\maincharacter.h
+1430641726 c:\users\avdrine\documents\github\monochrome\maincharacter.h
 	"libraries.h"
-	"SDL_Setup.h"
-	"Sprite.h"
+	"graphics.h"
 
 1430631759 source:c:\users\avdrine\documents\github\monochrome\maincharacter.cpp
 	"MainCharacter.h"
 
-1430640273 c:\users\avdrine\documents\github\monochrome\gamelvl.h
+1430641573 c:\users\avdrine\documents\github\monochrome\gamelvl.h
 	"libraries.h"
-	"SDL_Setup.h"
 	"objects.h"
-	"Sprite.h"
 	"MainCharacter.h"
 
 1430609033 c:\users\avdrine\documents\github\monochrome\crate.h
@@ -408,7 +404,7 @@
 1430608174 source:c:\users\avdrine\documents\github\monochrome\crate.cpp
 	"crate.h"
 
-1430639672 source:c:\users\avdrine\documents\github\monochrome\gamelvl.cpp
+1430641133 source:c:\users\avdrine\documents\github\monochrome\gamelvl.cpp
 	"GameLvl.h"
 
 1430638792 source:c:\users\avdrine\documents\github\monochrome\bullet.cpp
@@ -419,17 +415,57 @@
 	"SDL_Setup.h"
 	"Sprite.h"
 
-1430640248 c:\users\avdrine\documents\github\monochrome\objects.h
+1430640847 c:\users\avdrine\documents\github\monochrome\objects.h
 	"objects/crate.h"
 	"objects/bullet.h"
+	"objects/walls.h"
 
-1430640456 c:\users\avdrine\documents\github\monochrome\objects\crate.h
+1430641630 c:\users\avdrine\documents\github\monochrome\objects\crate.h
 	"../libraries.h"
-	"../SDL_Setup.h"
-	"../Sprite.h"
+	"../graphics.h"
 
-1430640463 c:\users\avdrine\documents\github\monochrome\objects\bullet.h
+1430641738 c:\users\avdrine\documents\github\monochrome\objects\bullet.h
 	"../libraries.h"
-	"../SDL_Setup.h"
-	"../Sprite.h"
+	"../graphics.h"
+
+1430641757 c:\users\avdrine\documents\github\monochrome\objects\walls.h
+	"../libraries.h"
+	"../graphics.h"
+
+1430638792 source:c:\users\avdrine\documents\github\monochrome\objects\bullet.cpp
+	"bullet.h"
+
+1430608174 source:c:\users\avdrine\documents\github\monochrome\objects\crate.cpp
+	"crate.h"
+
+1430641145 source:c:\users\avdrine\documents\github\monochrome\objects\walls.cpp
+	"walls.h"
+
+1430641464 c:\users\avdrine\documents\github\monochrome\graphics\collisionrectangle.h
+	"../libraries.h"
+
+1430641464 c:\users\avdrine\documents\github\monochrome\graphics
+
+1430641409 c:\users\avdrine\documents\github\monochrome\graphics.h
+	"graphics/SDL_Setup.h"
+	"graphics/CollisionRectangle.h"
+	"graphics/Sprite.h"
+
+1422664905 c:\users\avdrine\documents\github\monochrome\graphics\sdl_setup.h
+
+1430641537 c:\users\avdrine\documents\github\monochrome\graphics\sprite.h
+	"../libraries.h"
+	"CollisionRectangle.h"
+	"SDL_Setup.h"
+
+1414486279 source:c:\users\avdrine\documents\github\monochrome\graphics\collisionrectangle.cpp
+	"CollisionRectangle.h"
+
+1430641648 source:c:\users\avdrine\documents\github\monochrome\graphics\sdl_setup.cpp
+	"../libraries.h"
+	"SDL_Setup.h"
+
+1430641658 source:c:\users\avdrine\documents\github\monochrome\graphics\sprite.cpp
+	"../libraries.h"
+	"Sprite.h"
 

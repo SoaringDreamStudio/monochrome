@@ -41,17 +41,18 @@
 			<Add directory="Libraries/SDL2_image-2.0.0/i686-w64-mingw32/lib" />
 			<Add directory="Libraries/SDL2_mixer-2.0.0/i686-w64-mingw32/lib" />
 		</Linker>
-		<Unit filename="CollisionRectangle.cpp" />
-		<Unit filename="CollisionRectangle.h" />
 		<Unit filename="GameLvl.cpp" />
 		<Unit filename="GameLvl.h" />
 		<Unit filename="Main.h" />
 		<Unit filename="MainCharacter.cpp" />
 		<Unit filename="MainCharacter.h" />
-		<Unit filename="SDL_Setup.cpp" />
-		<Unit filename="SDL_Setup.h" />
-		<Unit filename="Sprite.cpp" />
-		<Unit filename="Sprite.h" />
+		<Unit filename="graphics.h" />
+		<Unit filename="graphics/CollisionRectangle.cpp" />
+		<Unit filename="graphics/CollisionRectangle.h" />
+		<Unit filename="graphics/SDL_Setup.cpp" />
+		<Unit filename="graphics/SDL_Setup.h" />
+		<Unit filename="graphics/Sprite.cpp" />
+		<Unit filename="graphics/Sprite.h" />
 		<Unit filename="libraries.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="monochrome.cpp" />
@@ -60,6 +61,8 @@
 		<Unit filename="objects/bullet.h" />
 		<Unit filename="objects/crate.cpp" />
 		<Unit filename="objects/crate.h" />
+		<Unit filename="objects/walls.cpp" />
+		<Unit filename="objects/walls.h" />
 		<Unit filename="struct.h" />
 		<Extensions>
 			<code_completion />

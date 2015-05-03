@@ -1,4 +1,4 @@
-#include "libraries.h"
+#include "../libraries.h"
 #include "SDL_Setup.h"
 
 

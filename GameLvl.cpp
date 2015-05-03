@@ -16,10 +16,10 @@ GameLvl::GameLvl(int* passed_MouseX,
     controlTimer = SDL_GetTicks();
     for(int i=0; i < 400; i=i+30)
     {
-        crates.push_back(new Crate(i+200, 150, CameraX, CameraY, csdl_setup));
-        crates.push_back(new Crate(i+200, 550, CameraX, CameraY, csdl_setup));
-        crates.push_back(new Crate(170, i+153, CameraX, CameraY, csdl_setup));
-        crates.push_back(new Crate(617, i+153, CameraX, CameraY, csdl_setup));
+        walls.push_back(new Wall(i+200, 150, CameraX, CameraY, csdl_setup));
+        walls.push_back(new Wall(i+200, 550, CameraX, CameraY, csdl_setup));
+        walls.push_back(new Wall(170, i+153, CameraX, CameraY, csdl_setup));
+        walls.push_back(new Wall(617, i+153, CameraX, CameraY, csdl_setup));
 
     }
 
@@ -75,6 +75,10 @@ void GameLvl::Update()
 void GameLvl::Draw()
 {
     Update();
+    for(std::vector<Wall*>::iterator i = walls.begin(); i != walls.end(); i++)
+    {
+        (*i)->Draw();
+    }
     for(std::vector<Crate*>::iterator i = crates.begin(); i != crates.end(); i++)
     {
         (*i)->Draw();
@@ -89,6 +93,49 @@ void GameLvl::Draw()
 void GameLvl::UpdateCollide()
 {
     for(std::vector<Crate*>::iterator i = crates.begin(); i != crates.end(); i++)
+    {
+        if((*i)->getSprite()->isColliding(MainHero->getSprite()->GetCollisionRect()))
+        {
+            if(MainHero->getDirection() == 0)
+            {
+                *CameraY = *CameraY - MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 1)
+            {
+                *CameraX = *CameraX + MainHero->getSpeed();
+                *CameraY = *CameraY - MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 2)
+            {
+                *CameraX = *CameraX + MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 3)
+            {
+                *CameraX = *CameraX + MainHero->getSpeed();
+                *CameraY = *CameraY + MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 4)
+            {
+                *CameraY = *CameraY + MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 5)
+            {
+                *CameraX = *CameraX - MainHero->getSpeed();
+                *CameraY = *CameraY + MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 6)
+            {
+                *CameraX = *CameraX - MainHero->getSpeed();
+            }
+            if(MainHero->getDirection() == 7)
+            {
+                *CameraX = *CameraX - MainHero->getSpeed();
+                *CameraY = *CameraY - MainHero->getSpeed();
+            }
+        }
+
+    }
+    for(std::vector<Wall*>::iterator i = walls.begin(); i != walls.end(); i++)
     {
         if((*i)->getSprite()->isColliding(MainHero->getSprite()->GetCollisionRect()))
         {

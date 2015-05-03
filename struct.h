@@ -1,6 +1,6 @@
 #pragma once
 #include "libraries.h"
-#include "CollisionRectangle.h"
+#include "graphics/CollisionRectangle.h"
 
 struct coordinates
 {

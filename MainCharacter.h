@@ -1,7 +1,6 @@
 
 #include "libraries.h"
-#include "SDL_Setup.h"
-#include "Sprite.h"
+#include "graphics.h"
 
 class MainCharacter
 {

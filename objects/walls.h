@@ -2,12 +2,12 @@
 #include "../libraries.h"
 #include "../graphics.h"
 
-class Crate
+class Wall
 {
 public:
-    Crate(float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
-    Crate(int x, int y, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
-    ~Crate();
+    Wall(float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
+    Wall(int x, int y, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
+    ~Wall();
 
     void Draw();
 

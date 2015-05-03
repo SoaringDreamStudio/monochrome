@@ -1,8 +1,6 @@
 
 #include "libraries.h"
-#include "SDL_Setup.h"
 #include "objects.h"
-#include "Sprite.h"
 #include "MainCharacter.h"
 
 class GameLvl
@@ -33,4 +31,5 @@ private:
     CSDL_Setup* csdl_setup;
     std::vector<Crate*> crates;
     std::vector<Bullet*> bullets;
+    std::vector<Wall*> walls;
 };

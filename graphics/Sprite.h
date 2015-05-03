@@ -1,5 +1,5 @@
 #pragma once
-#include "libraries.h"
+#include "../libraries.h"
 #include "CollisionRectangle.h"
 #include "SDL_Setup.h"
 
