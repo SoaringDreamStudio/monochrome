@@ -20,6 +20,7 @@ private:
     void UpdateControls();
     void UpdateCamera();
     bool pointInTR(int x, int y, int x1, int y1, int x2, int y2, int x3, int y3);
+    float GetDistance(int X1, int Y1, int X2, int Y2);
 
     MainCharacter* MainHero;
 
@@ -27,6 +28,7 @@ private:
     int* MouseY;
 
     int controlTimer;
+    int timerCamera;
 
     float* CameraX;
     float* CameraY;

@@ -17,6 +17,7 @@ GameLvl::GameLvl(int* passed_MouseX,
     MovingCameraY = 0;
 
     controlTimer = SDL_GetTicks();
+    timerCamera = SDL_GetTicks();
     for(int i=0; i < 400; i=i+30)
     {
         walls.push_back(new Wall(i+200, 150, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
@@ -76,32 +77,103 @@ bool GameLvl::pointInTR(int x, int y, int x1, int y1, int x2, int y2, int x3, in
 
 void GameLvl::UpdateCamera()
 {
-    if(pointInTR(*MouseX, *MouseY, 0, 0, csdl_setup->GetScreenWidth(), 0, csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+    int speed = 4;
+    if(timerCamera+16 < SDL_GetTicks())
     {
-        MovingCameraX = 1;
-        MovingCameraY = csdl_setup->GetScreenHeight()/4;
-    }
-    else if(pointInTR(*MouseX, *MouseY, 0, 0, 0, csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
-    {
-        MovingCameraX = csdl_setup->GetScreenWidth()/4;
-        MovingCameraY = 1;
-    }
-    else if(pointInTR(*MouseX, *MouseY, csdl_setup->GetScreenWidth(), csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth(), 0, csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
-    {
-        MovingCameraX = -csdl_setup->GetScreenWidth()/4;
-        MovingCameraY = 1;
-    }
-    else if(pointInTR(*MouseX, *MouseY, csdl_setup->GetScreenWidth(), csdl_setup->GetScreenHeight(), 0, csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
-    {
-        MovingCameraX = 1;
-        MovingCameraY = -csdl_setup->GetScreenHeight()/4;
-    }
-    else
-    {
-        MovingCameraX = 0;
-        MovingCameraY = 0;
-    }
+        if(pointInTR(*MouseX, *MouseY, 0, 0, csdl_setup->GetScreenWidth(), 0, csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+        {
 
+            float distance = GetDistance(MovingCameraX, MovingCameraY, 1, csdl_setup->GetScreenHeight()/4);
+            /*
+            std::cout << "MovingCameraX " << MovingCameraX << std::endl;
+            std::cout << "MovingCameraY " << MovingCameraY << std::endl;
+            std::cout << "csdl_setup->GetScreenHeight()/4 " << csdl_setup->GetScreenHeight()/4 << std::endl;
+            std::cout << "distance " << distance << std::endl;
+            */
+            if(MovingCameraX != 1 && distance > 5)
+            {
+                MovingCameraX = MovingCameraX - ((MovingCameraX - 1) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraX = 1;
+            }
+            if(MovingCameraY != csdl_setup->GetScreenHeight()/4 && distance > 5)
+            {
+                MovingCameraY = MovingCameraY - ((MovingCameraY - csdl_setup->GetScreenHeight()/4) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraY = csdl_setup->GetScreenHeight()/4;
+            }
+        }
+        else if(pointInTR(*MouseX, *MouseY, 0, 0, 0, csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+        {
+            float distance = GetDistance(MovingCameraX, MovingCameraY, csdl_setup->GetScreenWidth()/4, 1);
+            if(MovingCameraX != csdl_setup->GetScreenWidth()/4 && distance > 5)
+            {
+                MovingCameraX = MovingCameraX - ((MovingCameraX - csdl_setup->GetScreenWidth()/4) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraX = csdl_setup->GetScreenWidth()/4;
+            }
+            if(MovingCameraY != 1 && distance > 5)
+            {
+                MovingCameraY = MovingCameraY - ((MovingCameraY - 1) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraY = 1;
+            }
+        }
+        else if(pointInTR(*MouseX, *MouseY, csdl_setup->GetScreenWidth(), csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth(), 0, csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+        {
+            float distance = GetDistance(MovingCameraX, MovingCameraY, -csdl_setup->GetScreenWidth()/4, 1);
+            if(MovingCameraX != -csdl_setup->GetScreenWidth()/4 && distance > 5)
+            {
+                MovingCameraX = MovingCameraX - ((MovingCameraX - (-csdl_setup->GetScreenWidth()/4)) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraX = -csdl_setup->GetScreenWidth()/4;
+            }
+            if(MovingCameraY != 1 && distance > 5)
+            {
+                MovingCameraY = MovingCameraY - ((MovingCameraY - 1) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraY = 1;
+            }
+        }
+        else if(pointInTR(*MouseX, *MouseY, csdl_setup->GetScreenWidth(), csdl_setup->GetScreenHeight(), 0, csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+        {
+            float distance = GetDistance(MovingCameraX, MovingCameraY, 1, -csdl_setup->GetScreenHeight()/4);
+            if(MovingCameraX != 1 && distance > 5)
+            {
+                MovingCameraX = MovingCameraX - ((MovingCameraX - 1) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraX = 1;
+            }
+            if(MovingCameraY != - csdl_setup->GetScreenHeight()/4 && distance > 5)
+            {
+                MovingCameraY = MovingCameraY - ((MovingCameraY - (-csdl_setup->GetScreenHeight()/4)) / distance)*speed;
+            }
+            else
+            {
+                MovingCameraY = -csdl_setup->GetScreenHeight()/4;
+            }
+        }
+        else
+        {
+            MovingCameraX = 0;
+            MovingCameraY = 0;
+        }
+        timerCamera = SDL_GetTicks();
+    }
 
 }
 
@@ -237,4 +309,12 @@ void GameLvl::UpdateCollide()
 
     }
 
+}
+
+float GameLvl::GetDistance(int X1, int Y1, int X2, int Y2)
+{
+	float DifferenceX = X1 - X2;
+	float DifferenceY = Y1 - Y2;
+	float distance = sqrt((DifferenceX * DifferenceX) + (DifferenceY * DifferenceY));
+	return distance;
 }

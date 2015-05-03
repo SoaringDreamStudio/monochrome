@@ -41,8 +41,8 @@ MainCharacter::~MainCharacter()
 
 void MainCharacter::Update()
 {
-    delX = *mouseX - centerX;
-    delY = *mouseY - centerY;
+    delX = *mouseX - centerX - *MovingCameraX;
+    delY = *mouseY - centerY - *MovingCameraY;
     rad = acos(delX/(sqrt(delX*delX+delY*delY)));
     if(*mouseY < centerY)
         rad = M_PI + (M_PI - rad);
