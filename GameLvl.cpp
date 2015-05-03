@@ -12,6 +12,8 @@ GameLvl::GameLvl(int* passed_MouseX,
     MouseY = passed_MouseY;
     CameraX = passed_CameraX;
     CameraY = passed_CameraY;
+
+    controlTimer = SDL_GetTicks();
     for(int i=0; i < 400; i=i+30)
     {
         crates.push_back(new Crate(i+200, 150, CameraX, CameraY, csdl_setup));
@@ -36,11 +38,37 @@ GameLvl::~GameLvl()
 {
 
 }
+void GameLvl::UpdateControls()
+{
+    if(controlTimer+16 < SDL_GetTicks())
+    {
+        if((csdl_setup->GetMainEvent()->type == SDL_MOUSEBUTTONUP) &&
+               (csdl_setup->GetMainEvent()->button.state == SDL_RELEASED) &&
+               (csdl_setup->GetMainEvent()->button.button == SDL_BUTTON(SDL_BUTTON_LEFT)))
+               {
+                    float tempX = 40 * cos(MainHero->getDirectionInRad());
+                    float tempY = 40 * sin(MainHero->getDirectionInRad());
+                    bullets.push_back(new Bullet(csdl_setup->GetScreenWidth()/2-*CameraX+tempX,csdl_setup->GetScreenHeight()/2-*CameraY+tempY, MainHero->getDirectionInRad(), CameraX,CameraY, csdl_setup));
 
+                    csdl_setup->GetMainEvent()->type = NULL;
+                    csdl_setup->GetMainEvent()->button.state = NULL;
+                    csdl_setup->GetMainEvent()->button.button = NULL;
+               }
+    }
+}
 
 void GameLvl::Update()
 {
+    UpdateControls();
     UpdateCollide();
+    for(std::vector<Bullet*>::iterator i = bullets.begin(); i != bullets.end(); i++)
+    {
+        if((*i)->Destroy())
+        {
+            bullets.erase(i);
+            i--;
+        }
+    }
             //std::cout << "*CameraX " << *CameraX << "*CameraY " << *CameraY << std::endl;
     //anim
 }
@@ -53,6 +81,10 @@ void GameLvl::Draw()
     }
 
     MainHero->Draw();
+    for(std::vector<Bullet*>::iterator i = bullets.begin(); i != bullets.end(); i++)
+    {
+        (*i)->Draw();
+    }
 }
 void GameLvl::UpdateCollide()
 {
@@ -98,6 +130,13 @@ void GameLvl::UpdateCollide()
             }
 
 
+        }
+        for(std::vector<Bullet*>::iterator z = bullets.begin(); z != bullets.end(); z++)
+        {
+            if((*i)->getSprite()->isColliding((*z)->getSprite()->GetCollisionRect()))
+            {
+                (*z)->setDestroy();
+            }
         }
 
     }

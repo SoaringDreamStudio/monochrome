@@ -385,7 +385,7 @@
 	"libraries.h"
 	"Sprite.h"
 
-1430631790 c:\users\avdrine\documents\github\monochrome\maincharacter.h
+1430638348 c:\users\avdrine\documents\github\monochrome\maincharacter.h
 	"libraries.h"
 	"SDL_Setup.h"
 	"Sprite.h"
@@ -393,11 +393,12 @@
 1430631759 source:c:\users\avdrine\documents\github\monochrome\maincharacter.cpp
 	"MainCharacter.h"
 
-1430610175 c:\users\avdrine\documents\github\monochrome\gamelvl.h
+1430636248 c:\users\avdrine\documents\github\monochrome\gamelvl.h
 	"libraries.h"
 	"SDL_Setup.h"
 	"Sprite.h"
 	"crate.h"
+	"bullet.h"
 	"MainCharacter.h"
 
 1430609033 c:\users\avdrine\documents\github\monochrome\crate.h
@@ -408,6 +409,14 @@
 1430608174 source:c:\users\avdrine\documents\github\monochrome\crate.cpp
 	"crate.h"
 
-1430632519 source:c:\users\avdrine\documents\github\monochrome\gamelvl.cpp
+1430638363 source:c:\users\avdrine\documents\github\monochrome\gamelvl.cpp
 	"GameLvl.h"
+
+1430638792 source:c:\users\avdrine\documents\github\monochrome\bullet.cpp
+	"bullet.h"
+
+1430639538 c:\users\avdrine\documents\github\monochrome\bullet.h
+	"libraries.h"
+	"SDL_Setup.h"
+	"Sprite.h"
 

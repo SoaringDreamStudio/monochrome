@@ -12,6 +12,7 @@ public:
     void Draw();
     CSprite* getSprite() {return texture;}
     int getDirection();
+    float getDirectionInRad(){return rad;}
     int getSpeed() {return speed;}
 private:
     void Update();
@@ -35,8 +36,8 @@ private:
     int centerY;
 
     CSprite* texture;
-    double n;//градус
-    double rad;
+    float n;//градус
+    float rad;
     int delX, delY;
 
     float* CameraX;
