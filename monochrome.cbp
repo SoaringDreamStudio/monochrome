@@ -52,13 +52,14 @@
 		<Unit filename="SDL_Setup.h" />
 		<Unit filename="Sprite.cpp" />
 		<Unit filename="Sprite.h" />
-		<Unit filename="bullet.cpp" />
-		<Unit filename="bullet.h" />
-		<Unit filename="crate.cpp" />
-		<Unit filename="crate.h" />
 		<Unit filename="libraries.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="monochrome.cpp" />
+		<Unit filename="objects.h" />
+		<Unit filename="objects/bullet.cpp" />
+		<Unit filename="objects/bullet.h" />
+		<Unit filename="objects/crate.cpp" />
+		<Unit filename="objects/crate.h" />
 		<Unit filename="struct.h" />
 		<Extensions>
 			<code_completion />

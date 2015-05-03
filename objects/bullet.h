@@ -1,7 +1,7 @@
 
-#include "libraries.h"
-#include "SDL_Setup.h"
-#include "Sprite.h"
+#include "../libraries.h"
+#include "../SDL_Setup.h"
+#include "../Sprite.h"
 
 class Bullet
 {

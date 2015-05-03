@@ -1,9 +1,8 @@
 
 #include "libraries.h"
 #include "SDL_Setup.h"
+#include "objects.h"
 #include "Sprite.h"
-#include "crate.h"
-#include "bullet.h"
 #include "MainCharacter.h"
 
 class GameLvl
