@@ -6,7 +6,29 @@
 class CSprite
 {
 public:
-	CSprite(SDL_Renderer* passed_renderer, std::string FilePath, int x, int y, int w, int h, float *passed_CameraX, float *passed_CameraY, CCollisionRectangle passed_CollisionRect, CSDL_Setup* csdl_setup);
+	CSprite(SDL_Renderer* passed_renderer,
+          std::string FilePath,
+          int x,
+          int y,
+          int w,
+          int h,
+          float *passed_CameraX,
+          float *passed_CameraY,
+          CCollisionRectangle passed_CollisionRect,
+          CSDL_Setup* csdl_setup);
+
+	CSprite(SDL_Renderer* passed_renderer,
+          std::string FilePath,
+          int x,
+          int y,
+          int w,
+          int h,
+          float *passed_CameraX,
+          float *passed_CameraY,
+          float *passed_MovingCameraX,
+          float *passed_MovingCameraY,
+          CCollisionRectangle passed_CollisionRect,
+          CSDL_Setup* csdl_setup);
 	//CSprite(SDL_Renderer* passed_renderer, std::string FilePath, int* x, int* y, int w, int h, float *passed_CameraX, float *passed_CameraY, CCollisionRectangle passed_CollisionRect);
 	//CSprite(spriteInfo info);
 	~CSprite(void);
@@ -55,6 +77,9 @@ private:
 
     float *CameraX;
     float *CameraY;
+    float *MovingCameraX;
+    float *MovingCameraY;
+
 	float Orgin_X;
 	float Orgin_Y;
 

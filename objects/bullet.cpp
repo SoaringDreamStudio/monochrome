@@ -1,12 +1,21 @@
 
 #include "bullet.h"
 
-Bullet::Bullet(int x, int y, float passed_direction, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup)
+Bullet::Bullet(int x,
+               int y,
+               float passed_direction,
+               float* passed_CameraX,
+               float* passed_CameraY,
+               float* passed_MovingCameraX,
+               float* passed_MovingCameraY,
+               CSDL_Setup* passed_csdl_setup)
 {
     csdl_setup = passed_csdl_setup;
     direction = passed_direction;
     CameraX = passed_CameraX;
     CameraY = passed_CameraY;
+    MovingCameraX = passed_MovingCameraX;
+    MovingCameraY = passed_MovingCameraY;
     X = x;
     Y = y;
     W = 5;
@@ -14,7 +23,7 @@ Bullet::Bullet(int x, int y, float passed_direction, float* passed_CameraX, floa
 
     speed = 10;
 
-    texture = new CSprite(csdl_setup->GetRenderer(), "data/img/bullet.png", X, Y, W, H, CameraX, CameraY,
+    texture = new CSprite(csdl_setup->GetRenderer(), "data/img/bullet.png", X, Y, W, H, CameraX, CameraY, MovingCameraX, MovingCameraY,
                               CCollisionRectangle(0, 0, W, H), csdl_setup);
 
     lifeTime = SDL_GetTicks();

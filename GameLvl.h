@@ -18,6 +18,8 @@ private:
     void Update();
     void UpdateCollide();
     void UpdateControls();
+    void UpdateCamera();
+    bool pointInTR(int x, int y, int x1, int y1, int x2, int y2, int x3, int y3);
 
     MainCharacter* MainHero;
 
@@ -28,6 +30,9 @@ private:
 
     float* CameraX;
     float* CameraY;
+
+    float MovingCameraX;
+    float MovingCameraY;
     CSDL_Setup* csdl_setup;
     std::vector<Crate*> crates;
     std::vector<Bullet*> bullets;

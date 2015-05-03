@@ -5,7 +5,14 @@
 class Bullet
 {
 public:
-    Bullet(int x, int y, float direction, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
+    Bullet(int x,
+           int y,
+           float direction,
+           float* passed_CameraX,
+           float* passed_CameraY,
+           float* passed_MovingCameraX,
+           float* passed_MovingCameraY,
+           CSDL_Setup* passed_csdl_setup);
     ~Bullet();
 
     void Draw();
@@ -35,5 +42,7 @@ private:
 
     float* CameraX;
     float* CameraY;
+    float* MovingCameraX;
+    float* MovingCameraY;
     CSDL_Setup* csdl_setup;
 };

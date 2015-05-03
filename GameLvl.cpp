@@ -13,26 +13,29 @@ GameLvl::GameLvl(int* passed_MouseX,
     CameraX = passed_CameraX;
     CameraY = passed_CameraY;
 
+    MovingCameraX = 0;
+    MovingCameraY = 0;
+
     controlTimer = SDL_GetTicks();
     for(int i=0; i < 400; i=i+30)
     {
-        walls.push_back(new Wall(i+200, 150, CameraX, CameraY, csdl_setup));
-        walls.push_back(new Wall(i+200, 550, CameraX, CameraY, csdl_setup));
-        walls.push_back(new Wall(170, i+153, CameraX, CameraY, csdl_setup));
-        walls.push_back(new Wall(617, i+153, CameraX, CameraY, csdl_setup));
+        walls.push_back(new Wall(i+200, 150, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+        walls.push_back(new Wall(i+200, 550, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+        walls.push_back(new Wall(170, i+153, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+        walls.push_back(new Wall(617, i+153, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
 
     }
 
-    crates.push_back(new Crate(230, 250, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(260, 250, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(230, 280, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(400, 450, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(315, 400, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(387, 240, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(500, 300, CameraX, CameraY, csdl_setup));
-    crates.push_back(new Crate(400, 300, CameraX, CameraY, csdl_setup));
+    crates.push_back(new Crate(230, 250, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(260, 250, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(230, 280, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(400, 450, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(315, 400, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(387, 240, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(500, 300, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    crates.push_back(new Crate(400, 300, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
 
-	MainHero = new MainCharacter(MouseX, MouseY, CameraX, CameraY, csdl_setup);
+	MainHero = new MainCharacter(MouseX, MouseY, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup);
 }
 GameLvl::~GameLvl()
 {
@@ -48,17 +51,63 @@ void GameLvl::UpdateControls()
                {
                     float tempX = 40 * cos(MainHero->getDirectionInRad());
                     float tempY = 40 * sin(MainHero->getDirectionInRad());
-                    bullets.push_back(new Bullet(csdl_setup->GetScreenWidth()/2-*CameraX+tempX,csdl_setup->GetScreenHeight()/2-*CameraY+tempY, MainHero->getDirectionInRad(), CameraX,CameraY, csdl_setup));
+                    bullets.push_back(new Bullet(csdl_setup->GetScreenWidth()/2-*CameraX+tempX,csdl_setup->GetScreenHeight()/2-*CameraY+tempY, MainHero->getDirectionInRad(), CameraX,CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
 
                     csdl_setup->GetMainEvent()->type = NULL;
                     csdl_setup->GetMainEvent()->button.state = NULL;
                     csdl_setup->GetMainEvent()->button.button = NULL;
                }
     }
+
+}
+
+
+bool GameLvl::pointInTR(int x, int y, int x1, int y1, int x2, int y2, int x3, int y3)
+{
+    int a = (x1 - x) * (y2 - y1) - (x2 - x1) * (y1 - y);
+    int b = (x2 - x) * (y3 - y2) - (x3 - x2) * (y2 - y);
+    int c = (x3 - x) * (y1 - y3) - (x1 - x3) * (y3 - y);
+
+    if ((a >= 0 && b >= 0 && c >= 0) || (a <= 0 && b <= 0 && c <= 0))
+        return 1;
+    else
+        return 0;
+}
+
+void GameLvl::UpdateCamera()
+{
+    if(pointInTR(*MouseX, *MouseY, 0, 0, csdl_setup->GetScreenWidth(), 0, csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+    {
+        MovingCameraX = 1;
+        MovingCameraY = csdl_setup->GetScreenHeight()/4;
+    }
+    else if(pointInTR(*MouseX, *MouseY, 0, 0, 0, csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+    {
+        MovingCameraX = csdl_setup->GetScreenWidth()/4;
+        MovingCameraY = 1;
+    }
+    else if(pointInTR(*MouseX, *MouseY, csdl_setup->GetScreenWidth(), csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth(), 0, csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+    {
+        MovingCameraX = -csdl_setup->GetScreenWidth()/4;
+        MovingCameraY = 1;
+    }
+    else if(pointInTR(*MouseX, *MouseY, csdl_setup->GetScreenWidth(), csdl_setup->GetScreenHeight(), 0, csdl_setup->GetScreenHeight(), csdl_setup->GetScreenWidth()/2, csdl_setup->GetScreenHeight()/2))
+    {
+        MovingCameraX = 1;
+        MovingCameraY = -csdl_setup->GetScreenHeight()/4;
+    }
+    else
+    {
+        MovingCameraX = 0;
+        MovingCameraY = 0;
+    }
+
+
 }
 
 void GameLvl::Update()
 {
+    UpdateCamera();
     UpdateControls();
     UpdateCollide();
     for(std::vector<Bullet*>::iterator i = bullets.begin(); i != bullets.end(); i++)

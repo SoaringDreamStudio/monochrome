@@ -5,8 +5,18 @@
 class Wall
 {
 public:
-    Wall(float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
-    Wall(int x, int y, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
+    Wall(float* passed_CameraX,
+         float* passed_CameraY,
+         float* passed_MovingCameraX,
+         float* passed_MovingCameraY,
+         CSDL_Setup* passed_csdl_setup);
+    Wall(int x,
+         int y,
+         float* passed_CameraX,
+         float* passed_CameraY,
+         float* passed_MovingCameraX,
+         float* passed_MovingCameraY,
+         CSDL_Setup* passed_csdl_setup);
     ~Wall();
 
     void Draw();
@@ -28,5 +38,7 @@ private:
 
     float* CameraX;
     float* CameraY;
+    float* MovingCameraX;
+    float* MovingCameraY;
     CSDL_Setup* csdl_setup;
 };

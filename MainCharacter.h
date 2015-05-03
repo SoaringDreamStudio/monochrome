@@ -5,7 +5,13 @@
 class MainCharacter
 {
 public:
-    MainCharacter(int* mouseX, int* mouseY, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup);
+    MainCharacter(int* mouseX,
+                  int* mouseY,
+                  float* passed_CameraX,
+                  float* passed_CameraY,
+                  float* passed_MovingCameraX,
+                  float* passed_MovingCameraY,
+                  CSDL_Setup* passed_csdl_setup);
     ~MainCharacter();
 
     void Draw();
@@ -33,6 +39,9 @@ private:
     int sizeY;
     int centerX;
     int centerY;
+
+    float* MovingCameraX;
+    float* MovingCameraY;
 
     CSprite* texture;
     float n;//градус

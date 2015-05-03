@@ -1,7 +1,7 @@
 
 #include "MainCharacter.h"
 
-MainCharacter::MainCharacter(int* passed_mouseX, int* passed_mouseY, float* passed_CameraX, float* passed_CameraY, CSDL_Setup* passed_csdl_setup)
+MainCharacter::MainCharacter(int* passed_mouseX, int* passed_mouseY, float* passed_CameraX, float* passed_CameraY, float* passed_MovingCameraX, float* passed_MovingCameraY, CSDL_Setup* passed_csdl_setup)
 {
     csdl_setup = passed_csdl_setup;
     CameraX = passed_CameraX;
@@ -18,7 +18,10 @@ MainCharacter::MainCharacter(int* passed_mouseX, int* passed_mouseY, float* pass
     centerX = mainX + sizeX/2;
     centerY = mainY + sizeY/2;
 
-    texture = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", mainX, mainY, sizeX, sizeY, CameraX, CameraY,
+    MovingCameraX = passed_MovingCameraX;
+    MovingCameraY = passed_MovingCameraY;
+
+    texture = new CSprite(csdl_setup->GetRenderer(), "data/img/hero.png", mainX, mainY, sizeX, sizeY, CameraX, CameraY, MovingCameraX, MovingCameraY,
                               CCollisionRectangle(0, 26, sizeX, 26), csdl_setup);
     n = 0;//градус
     rad = 0;
