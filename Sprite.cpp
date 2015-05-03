@@ -248,6 +248,9 @@ bool CSprite::checkLoadedSprites(CSDL_Setup* csdl_setup, std::string FilePath) /
 
 void CSprite::DrawWithRotate(double angle)
 {
+    CollisionRect.SetX(rect.x);// + *CameraX);
+    CollisionRect.SetY(rect.y);// + *CameraY);
+
     SDL_RenderCopyEx(renderer,
                      image,
                      NULL,
@@ -255,4 +258,8 @@ void CSprite::DrawWithRotate(double angle)
                      angle,
                      NULL,
                      SDL_FLIP_NONE);
+
+
+    SDL_Rect tmpper = CollisionRect.GetRectangle();
+	SDL_RenderCopy(renderer, hitbox, NULL, &tmpper);
 }

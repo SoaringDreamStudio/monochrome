@@ -10,11 +10,22 @@ public:
     ~MainCharacter();
 
     void Draw();
+    CSprite* getSprite() {return texture;}
+    int getDirection();
+    int getSpeed() {return speed;}
 private:
     void Update();
+    void UpdateControls();
 
     int* mouseX;
     int* mouseY;
+
+    bool MoveLeft;
+    bool MoveDown;
+    bool MoveRight;
+    bool MoveUp;
+
+    int speed;
 
     int mainX;
     int mainY;
@@ -31,4 +42,6 @@ private:
     float* CameraX;
     float* CameraY;
     CSDL_Setup* csdl_setup;
+
+    int timeCheckMoving;
 };

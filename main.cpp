@@ -16,7 +16,6 @@ CMain::CMain(int passed_ScreenWidth, int passed_ScreenHeight)
 	MouseX = 0;
 	MouseY = 0;
 	ignoreGameOver = false;
-	MainHero = new MainCharacter(&MouseX, &MouseY, &CameraX, &CameraY, csdl_setup);
 
 }
 
@@ -59,7 +58,7 @@ void CMain::GameLoop(void)
     delete loadingProcess;
 
 */
-
+    GameLvl* activeLvl = new GameLvl(&MouseX, &MouseY, &CameraX, &CameraY, csdl_setup);
     //основной процесс игры
     //Выполняется до тех пор пока переменная quit ложна и не был нажат крестик
 	while(!quit && csdl_setup->GetMainEvent()->type != SDL_QUIT)
@@ -70,7 +69,8 @@ void CMain::GameLoop(void)
         //считываем положение мышки
 		SDL_GetMouseState(&MouseX, &MouseY);
 
-        MainHero->Draw();
+        activeLvl->Draw();
+
         /*
         //проверка на режим игры и считывание клавиш для переключения режимов
         Stage1->Update();

@@ -1,8 +1,8 @@
 #pragma once
 #include "SDL_Setup.h"
 #include "Sprite.h"
-#include "MainCharacter.h"
-//#include "Enviroment.h"
+//#include "MainCharacter.h"
+#include "GameLvl.h"
 //#include "Menu.h"
 #include <windows.h>
 #include <math.h>
@@ -21,7 +21,6 @@ private:
     float CameraX;
     float CameraY;
 
-    MainCharacter* MainHero;
 
 	int ScreenWidth;
 	int ScreenHeight;
