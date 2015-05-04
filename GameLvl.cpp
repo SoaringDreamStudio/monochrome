@@ -79,7 +79,7 @@ bool GameLvl::pointInTR(int x, int y, int x1, int y1, int x2, int y2, int x3, in
 }
 
 void GameLvl::UpdateCamera()
-{
+{/*
     int speed = 4;
     if(timerCamera+16 < SDL_GetTicks())
     {
@@ -87,12 +87,12 @@ void GameLvl::UpdateCamera()
         {
 
             float distance = GetDistance(MovingCameraX, MovingCameraY, 1, csdl_setup->GetScreenHeight()/4);
-            /*
+
             std::cout << "MovingCameraX " << MovingCameraX << std::endl;
             std::cout << "MovingCameraY " << MovingCameraY << std::endl;
             std::cout << "csdl_setup->GetScreenHeight()/4 " << csdl_setup->GetScreenHeight()/4 << std::endl;
             std::cout << "distance " << distance << std::endl;
-            */
+
             if(MovingCameraX != 1 && distance > 5)
             {
                 MovingCameraX = MovingCameraX - ((MovingCameraX - 1) / distance)*speed;
@@ -177,12 +177,21 @@ void GameLvl::UpdateCamera()
         }
         timerCamera = SDL_GetTicks();
     }
+*/
+    float delX = *MouseX - csdl_setup->GetScreenWidth()/2 - MovingCameraX;
+    float delY = *MouseY - csdl_setup->GetScreenHeight()/2 - MovingCameraY;
+    float rad = acos(delX/(sqrt(delX*delX+delY*delY)));
+    if(*MouseY < csdl_setup->GetScreenHeight()/2)
+        rad = M_PI + (M_PI - rad);
+    rad += M_PI;
+    MovingCameraX = 30 * cos(rad);
+    MovingCameraY = 30 * sin(rad);
 
 }
 
 void GameLvl::Update()
 {
-    //UpdateCamera();
+    UpdateCamera();
     UpdateControls();
     UpdateCollide();
     for(std::vector<Bullet*>::iterator i = bullets.begin(); i != bullets.end(); i++)
