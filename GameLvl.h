@@ -1,6 +1,7 @@
 
 #include "libraries.h"
 #include "objects.h"
+#include "NPC.h"
 #include "MainCharacter.h"
 
 class GameLvl
@@ -39,4 +40,5 @@ private:
     std::vector<Crate*> crates;
     std::vector<Bullet*> bullets;
     std::vector<Wall*> walls;
+    std::vector<Enemy*> enemies;
 };

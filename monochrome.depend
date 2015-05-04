@@ -388,12 +388,13 @@
 	"libraries.h"
 	"graphics.h"
 
-1430678563 source:c:\users\avdrine\documents\github\monochrome\maincharacter.cpp
+1430693513 source:c:\users\avdrine\documents\github\monochrome\maincharacter.cpp
 	"MainCharacter.h"
 
-1430678423 c:\users\avdrine\documents\github\monochrome\gamelvl.h
+1430751500 c:\users\avdrine\documents\github\monochrome\gamelvl.h
 	"libraries.h"
 	"objects.h"
+	"NPC.h"
 	"MainCharacter.h"
 
 1430609033 c:\users\avdrine\documents\github\monochrome\crate.h
@@ -404,7 +405,7 @@
 1430608174 source:c:\users\avdrine\documents\github\monochrome\crate.cpp
 	"crate.h"
 
-1430678519 source:c:\users\avdrine\documents\github\monochrome\gamelvl.cpp
+1430752588 source:c:\users\avdrine\documents\github\monochrome\gamelvl.cpp
 	"GameLvl.h"
 
 1430638792 source:c:\users\avdrine\documents\github\monochrome\bullet.cpp
@@ -468,4 +469,14 @@
 1430665659 source:c:\users\avdrine\documents\github\monochrome\graphics\sprite.cpp
 	"../libraries.h"
 	"Sprite.h"
+
+1430748145 c:\users\avdrine\documents\github\monochrome\npc.h
+	"NPC/enemy.h"
+
+1430750879 c:\users\avdrine\documents\github\monochrome\npc\enemy.h
+	"../libraries.h"
+	"../graphics.h"
+
+1430752480 source:c:\users\avdrine\documents\github\monochrome\npc\enemy.cpp
+	"enemy.h"
 

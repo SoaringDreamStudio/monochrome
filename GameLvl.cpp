@@ -35,6 +35,9 @@ GameLvl::GameLvl(int* passed_MouseX,
     crates.push_back(new Crate(387, 240, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
     crates.push_back(new Crate(500, 300, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
     crates.push_back(new Crate(400, 300, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    enemies.push_back(new Enemy(300, 300, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    enemies.push_back(new Enemy(450, 250, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
+    enemies.push_back(new Enemy(200, 350, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup));
 
 	MainHero = new MainCharacter(MouseX, MouseY, CameraX, CameraY, &MovingCameraX, &MovingCameraY, csdl_setup);
 }
@@ -179,7 +182,7 @@ void GameLvl::UpdateCamera()
 
 void GameLvl::Update()
 {
-    UpdateCamera();
+    //UpdateCamera();
     UpdateControls();
     UpdateCollide();
     for(std::vector<Bullet*>::iterator i = bullets.begin(); i != bullets.end(); i++)
@@ -201,6 +204,10 @@ void GameLvl::Draw()
         (*i)->Draw();
     }
     for(std::vector<Crate*>::iterator i = crates.begin(); i != crates.end(); i++)
+    {
+        (*i)->Draw();
+    }
+    for(std::vector<Enemy*>::iterator i = enemies.begin(); i != enemies.end(); i++)
     {
         (*i)->Draw();
     }
@@ -306,8 +313,26 @@ void GameLvl::UpdateCollide()
                 (*z)->setDestroy();
             }
         }
+    }
+    for(std::vector<Enemy*>::iterator i = enemies.begin(); i != enemies.end(); i++)
+    {
+        for(std::vector<Bullet*>::iterator z = bullets.begin(); z != bullets.end(); z++)
+        {
+            if((*i)->getSprite()->isColliding((*z)->getSprite()->GetCollisionRect()))
+            {
+                //(*i)->Damage(10);
+                if(!(*i)->Damage(10))
+                {
+                    enemies.erase(i); i--;
+
+                }
+                (*z)->setDestroy();
+            }
+        }
 
     }
+
+
 
 }
 

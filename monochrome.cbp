@@ -46,6 +46,9 @@
 		<Unit filename="Main.h" />
 		<Unit filename="MainCharacter.cpp" />
 		<Unit filename="MainCharacter.h" />
+		<Unit filename="NPC.h" />
+		<Unit filename="NPC/enemy.cpp" />
+		<Unit filename="NPC/enemy.h" />
 		<Unit filename="graphics.h" />
 		<Unit filename="graphics/CollisionRectangle.cpp" />
 		<Unit filename="graphics/CollisionRectangle.h" />
