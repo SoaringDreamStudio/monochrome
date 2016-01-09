@@ -16,7 +16,7 @@ CMain::CMain(int passed_ScreenWidth, int passed_ScreenHeight)
 	MouseX = 0;
 	MouseY = 0;
 	ignoreGameOver = false;
-
+//hghgghhdhddgh
 }
 
 
